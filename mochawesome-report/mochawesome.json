@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-08-19T03:41:29.858Z",
+    "end": "2026-08-19T03:41:32.123Z",
+    "duration": 2265,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6ce54b05-7ba6-45cd-a30c-7b8f6f6d26a6",
+      "title": "",
+      "fullFile": "/Users/rafidashafira/Documents/API Automation/tests/apiTest.js",
+      "file": "/tests/apiTest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "118f9bfc-a1f0-4ef8-b1e3-55db39a552d8",
+          "title": "API Automation Homework",
+          "fullFile": "/Users/rafidashafira/Documents/API Automation/tests/apiTest.js",
+          "file": "/tests/apiTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Valid Login",
+              "fullTitle": "API Automation Homework Valid Login",
+              "timedOut": false,
+              "duration": 369,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\n  \"https://belajar-bareng.onrender.com/api/login\",\n  {\n    headers: {\n      \"Content-Type\": \"application/json\",\n    },\n    method: \"POST\",\n    body: JSON.stringify({\n      username: \"admin\",\n      password: \"admin\",\n    }),\n  }\n);\nconst data = await response.json();\ntoken = data.token; \nexpect(response.status).to.equal(200);",
+              "err": {},
+              "uuid": "545984aa-ba71-4c87-b5b9-8e1c44e9da1e",
+              "parentUUID": "118f9bfc-a1f0-4ef8-b1e3-55db39a552d8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify first username",
+              "fullTitle": "API Automation Homework Verify first username",
+              "timedOut": false,
+              "duration": 850,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\n  \"https://belajar-bareng.onrender.com/api/users\",\n  {\n    method: \"GET\",\n    headers: {\n      \"Content-Type\": \"application/json\",\n      \"authorization\": `Bearer ${token}`,\n    },\n  }\n);\nconst data = await response.json();\nexpect(response.status).to.equal(200);\nexpect(data.users[1].username).to.equal(\"Rafis\");",
+              "err": {},
+              "uuid": "b6aae3cf-7cd7-457a-a82f-038f1eecf486",
+              "parentUUID": "118f9bfc-a1f0-4ef8-b1e3-55db39a552d8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Add user with valid data",
+              "fullTitle": "API Automation Homework Add user with valid data",
+              "timedOut": false,
+              "duration": 372,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\n  \"https://belajar-bareng.onrender.com/api/add-user\",\n  {\n    headers: {\n      \"Content-Type\": \"application/json\",\n      \"authorization\": `Bearer ${token}`,\n    },\n    method: \"POST\",\n    body: JSON.stringify({\n      username: \"Misako\",\n      age: 34,\n    }),\n  }\n);\nconst data = await response.json();\nexpect(response.status).to.equal(201);\nexpect(data.message).to.equal(\"User successfully added, Hi Misako!\");",
+              "err": {},
+              "uuid": "c3bb8c44-d913-430d-956d-ce0c62956816",
+              "parentUUID": "118f9bfc-a1f0-4ef8-b1e3-55db39a552d8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Add user with empty data",
+              "fullTitle": "API Automation Homework Add user with empty data",
+              "timedOut": false,
+              "duration": 668,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\n  \"https://belajar-bareng.onrender.com/api/add-user\",\n  {\n    headers: {\n      \"Content-Type\": \"application/json\",\n      \"authorization\": `Bearer ${token}`,\n    },\n    method: \"POST\",\n    body: JSON.stringify({\n      username: \"\",\n      age: \"\",\n    }),\n  }\n);\nconst data = await response.json();\nexpect(response.status).to.equal(400);\nexpect(data.error).to.equal(\"Missing username or age\");",
+              "err": {},
+              "uuid": "a403d0ee-d034-4242-94ab-559d8f710cd9",
+              "parentUUID": "118f9bfc-a1f0-4ef8-b1e3-55db39a552d8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "545984aa-ba71-4c87-b5b9-8e1c44e9da1e",
+            "b6aae3cf-7cd7-457a-a82f-038f1eecf486",
+            "c3bb8c44-d913-430d-956d-ce0c62956816",
+            "a403d0ee-d034-4242-94ab-559d8f710cd9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2259,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.8.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
